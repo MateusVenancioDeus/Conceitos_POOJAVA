@@ -1,33 +1,57 @@
+import java.util.Scanner;
 public class Main {
- public static void main(String[] args) {
- Autor autor = new Autor();
- autor.nome = "Machado de Assis";
- autor.email = "MachadodeAssis@.com.br";
- autor.cpf = "123455675";
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
- Livro livro = new Livro ();
+        carro Carro = new carro();
+        Carro.modelo = "Porche Panamera";
+        Carro.cor = "Amarelo";
+        Carro.ano = "2025";
+        Carro.placa = "AL563T";
+        Carro.mostrarDetalhes();
 
-    livro.nome = "O Senhor dos aneis";
-     livro.descricao = "Uma historia de aventura magica!";
-     livro.valor = 200.90;
-     livro.isbn = "10-20-304";
-     livro.autor = autor;
-     livro.mostrarDetalhes();
+        motor motor = new motor();
+        motor.nome = "A combustao";
+        motor.cavalos = 500;
+        motor.tipo = "Gasolina";
+        motor.DetalhesMotor();
 
- Autor outroAutor = new Autor();
- outroAutor.nome = "Lady gaga";
- outroAutor.cpf = "04324241";
- outroAutor.email = "LADYGAGA2ASD1@ASF.COM";
+        int i = 0;
+        // Cria o laço que roda apenas uma vez
+        while (i < 1) {
+            System.out.println("Quer ligar seu carro? (sim / nao)");
+            String escolha = sc.next();
 
- // ponto é puxando atributo da classe!
- Livro outrolivro = new Livro();
+            if (escolha.equalsIgnoreCase("sim")) {
+                System.out.println("Seu carro ligou, escuta esse barulho cara que isso!");
 
- outrolivro.nome = "Pequeno principe";
- outrolivro.descricao = "Uma historia emocionante";
- outrolivro.valor = 100.0;
-  outrolivro.isbn = "123-125-26632";
- outrolivro.autor = outroAutor;
-outrolivro.mostrarDetalhes();
+                System.out.println("------ ** ------");
 
- }
+                // Pergunta para desligar
+                System.out.println("Quer desligar o carro? (sim / nao)");
+                String desliga = sc.next();
+
+                //.equalsIgnoreCase() quando quiser comparar Strings sem se importar com letras maiúsculas ou minúsculas.
+                //.contentEquals() quando precisar comparar uma String com outros tipos de sequência de caracteres.
+                //.equals() quando quiser uma comparação exata de conteúdo.
+
+                if (desliga.equalsIgnoreCase("sim")) {
+                    System.out.println("Carro desligado com sucesso!");
+                } else if (desliga.equalsIgnoreCase("nao")) {
+                    System.out.println("O carro continua ligado!");
+                } else {
+                    System.out.println("Opção inválida!");
+                }
+
+            } else if (escolha.equalsIgnoreCase("nao")) {
+                System.out.println("Carro desligado!");
+            } else {
+                System.out.println("Opção inválida!");
+            }
+
+            i++; // garante que vai rodar só uma vez o laço!
+        }
+
+        sc.close();
+    }
 }
